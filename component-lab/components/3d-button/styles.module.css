@@ -1,0 +1,33 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid #999;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #111;
+  background: #e8e8e8;
+  user-select: none;
+
+  /* box-shadow with no blur creates a hard shadow — this is the "depth" face */
+  box-shadow: 0 4px 0 #999;
+
+  /* nudge up so the shadow sits below, not underneath */
+  transform: translateY(-2px);
+
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+/* :active fires while the mouse button is held down — no JS needed */
+.btn:active {
+  /* drop down to where the shadow was */
+  transform: translateY(2px);
+  /* shadow disappears — button looks flush/pressed */
+  box-shadow: 0 0px 0 #999;
+}

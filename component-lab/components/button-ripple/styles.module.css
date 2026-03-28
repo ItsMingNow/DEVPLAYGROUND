@@ -1,0 +1,40 @@
+/* overflow: hidden clips the ripple circle so it doesn't spill outside the button */
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid #999;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #111;
+  background: #e8e8e8;
+  user-select: none;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+/* The ripple is a circle injected by JS at the click position */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  animation: ripple-expand 0.55s ease forwards;
+}
+
+@keyframes ripple-expand {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

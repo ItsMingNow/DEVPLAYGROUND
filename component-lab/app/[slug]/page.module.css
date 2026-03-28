@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.nav {
+  margin-bottom: 2rem;
+}
+
+.back {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.sampleBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: #e8e8e8;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: #e8e8e8;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.stage {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
