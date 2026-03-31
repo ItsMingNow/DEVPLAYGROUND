@@ -20,5 +20,11 @@ export const registry: ComponentMeta[] = [
     description: "A button that pushed inward or outward.",
     tags: ["css", "interaction", "button"],
     sample: false
-  }
+  },
+  {
+    slug: "piano-keys",
+    name: "Piano Keys",
+    description: "One octave of piano keys that press down on click.",
+    tags: ["css", "interaction", "music"],
+  },
 ];

@@ -1,0 +1,42 @@
+.keyboard {
+  position: relative;
+  display: flex;
+  gap: 4px;
+}
+
+.whiteKey {
+  width: 44px;
+  height: 140px;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #999;
+  background: #f0f0f0;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 5px 0 #999;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.whiteKey:active,
+.whiteKeyPressed {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+.blackKey {
+  position: absolute;
+  width: 28px;
+  height: 88px;
+  background: #444;
+  border-radius: 0 0 3px 3px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+  box-shadow: 0 5px 0 #111;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.blackKey:active,
+.blackKeyPressed {
+  transform: translateY(5px);
+  box-shadow: none;
+}
