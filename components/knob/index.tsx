@@ -27,24 +27,28 @@ export default function Knob({ options, value, onChange, label }: KnobProps) {
     ? -135 + (value / (options.length - 1)) * 270
     : 0;
 
-  // Register mouse listeners on the window (not the knob element) so dragging
-  // outside the knob still works — this is the same pattern used by sliders.
+  // Register mouse + touch listeners on the window so dragging outside the knob still works.
   useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
+    const move = (clientY: number) => {
       if (!dragStart.current) return;
-      // Dragging up (negative dy) increases the index; down decreases it.
-      // Every 20px of movement = 1 step.
-      const dy = dragStart.current.y - e.clientY;
+      const dy = dragStart.current.y - clientY;
       const step = Math.round(dy / 20);
       const next = Math.max(0, Math.min(optionsRef.current.length - 1, dragStart.current.index + step));
       onChangeRef.current(next);
     };
-    const onMouseUp = () => { dragStart.current = null; };
+    const onMouseMove = (e: MouseEvent) => move(e.clientY);
+    const onTouchMove = (e: TouchEvent) => { e.preventDefault(); move(e.touches[0].clientY); };
+    const onEnd = () => { dragStart.current = null; };
+
     window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("mouseup", onEnd);
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onEnd);
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("mouseup", onEnd);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onEnd);
     };
   }, []); // empty deps — listeners registered once, refs keep values fresh
 
@@ -54,8 +58,12 @@ export default function Knob({ options, value, onChange, label }: KnobProps) {
         className={styles.knob}
         style={{ transform: `rotate(${angle}deg)` }}
         onMouseDown={(e) => {
-          e.preventDefault(); // prevents text selection during drag
+          e.preventDefault();
           dragStart.current = { y: e.clientY, index: value };
+        }}
+        onTouchStart={(e) => {
+          e.preventDefault(); // prevents page scroll while turning the knob
+          dragStart.current = { y: e.touches[0].clientY, index: value };
         }}
       >
         <div className={styles.knobDot} />

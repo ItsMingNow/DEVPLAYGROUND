@@ -5,6 +5,13 @@
   gap: 1.5rem;
 }
 
+/* Lets the keyboard scroll horizontally on small screens rather than breaking layout */
+.keyboardScroll {
+  overflow-x: auto;
+  max-width: 100%;
+  padding-bottom: 0.5rem;
+}
+
 .hint {
   font-size: 0.85rem;
   color: var(--text-muted);
@@ -15,6 +22,8 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .label {

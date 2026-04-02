@@ -13,11 +13,13 @@ export default function SynthKeyboardDemo() {
   return (
     <div className={styles.wrapper}>
       <p className={styles.hint}>Press the keys</p>
-      <SynthKeyboard
-        volume={volume}
-        octave={octave}
-        soundSelection={SOUNDS[soundIndex] as SoundType}
-      />
+      <div className={styles.keyboardScroll}>
+        <SynthKeyboard
+          volume={volume}
+          octave={octave}
+          soundSelection={SOUNDS[soundIndex] as SoundType}
+        />
+      </div>
       <div className={styles.controls}>
         <label className={styles.label}>
           Volume

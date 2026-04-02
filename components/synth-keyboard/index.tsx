@@ -150,6 +150,15 @@ export default function SynthKeyboard({ volume = 70, octave = 4, soundSelection 
     return () => { window.removeEventListener("keydown", down); window.removeEventListener("keyup", up); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Touch handlers for a single key. preventDefault stops the browser from
+  // firing synthetic mouse events after touch, which would double-trigger attack/release.
+  // touchcancel covers cases like a notification interrupting the touch mid-press.
+  const touchHandlers = (note: string) => ({
+    onTouchStart: (e: React.TouchEvent) => { e.preventDefault(); attack(note); },
+    onTouchEnd:   (e: React.TouchEvent) => { e.preventDefault(); release(note); },
+    onTouchCancel:(e: React.TouchEvent) => { e.preventDefault(); release(note); },
+  });
+
   return (
     <div className={styles.keyboard}>
       {WHITE_KEYS.map((note) => (
@@ -158,8 +167,8 @@ export default function SynthKeyboard({ volume = 70, octave = 4, soundSelection 
           className={`${styles.whiteKey} ${pressed.has(note) ? styles.whiteKeyPressed : ""}`}
           onMouseDown={() => attack(note)}
           onMouseUp={() => release(note)}
-          // Release if the user clicks and drags off the key so it doesn't get stuck
           onMouseLeave={() => { if (pressed.has(note)) release(note); }}
+          {...touchHandlers(note)}
         />
       ))}
       {BLACK_KEYS.map((key) => (
@@ -170,6 +179,7 @@ export default function SynthKeyboard({ volume = 70, octave = 4, soundSelection 
           onMouseDown={() => attack(key.note)}
           onMouseUp={() => release(key.note)}
           onMouseLeave={() => { if (pressed.has(key.note)) release(key.note); }}
+          {...touchHandlers(key.note)}
         />
       ))}
     </div>
