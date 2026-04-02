@@ -1,0 +1,46 @@
+.knobWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.knob {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1e1e1e;
+  border: 2px solid #444;
+  cursor: grab;
+  position: relative;
+  user-select: none;
+  transition: transform 0.25s ease;
+}
+
+.knob:active {
+  cursor: grabbing;
+}
+
+/* The small dot that acts as the indicator — positioned near the top of the circle.
+   When the parent rotates, this dot sweeps from lower-left (-135deg) to lower-right (+135deg). */
+.knobDot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.knobLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.knobValue {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}

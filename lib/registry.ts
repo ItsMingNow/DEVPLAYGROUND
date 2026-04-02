@@ -22,9 +22,15 @@ export const registry: ComponentMeta[] = [
     sample: false
   },
   {
-    slug: "piano-keys",
-    name: "Piano Keys",
-    description: "One octave of piano keys that press down on click.",
-    tags: ["css", "interaction", "music"],
+    slug: "knob",
+    name: "Knob",
+    description: "A rotary knob that selects between options by clicking and dragging up or down.",
+    tags: ["css", "interaction", "input"],
+  },
+  {
+    slug: "synth-keyboard",
+    name: "Synth Keyboard",
+    description: "One octave of keys wired to Tone.js synthesis. Playable by mouse or keyboard.",
+    tags: ["css", "interaction", "music", "audio"],
   },
 ];

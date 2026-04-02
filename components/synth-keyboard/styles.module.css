@@ -16,6 +16,8 @@
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
+/* :active handles mouse clicks natively via CSS.
+   .whiteKeyPressed handles keyboard input via JS state. */
 .whiteKey:active,
 .whiteKeyPressed {
   transform: translateY(5px);
@@ -31,6 +33,8 @@
   cursor: pointer;
   user-select: none;
   z-index: 1;
+  /* box-shadow creates the depth illusion — same trick as white keys.
+     On press, translateY moves the key down and shadow disappears. */
   box-shadow: 0 5px 0 #111;
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
