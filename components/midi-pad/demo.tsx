@@ -13,10 +13,10 @@ const PAD_COLORS = [
 ];
 
 const PAD_LABELS = [
-  "C2", "D2", "E2", "F2",
-  "G2", "A2", "B2", "C3",
-  "D3", "E3", "F3", "G3",
-  "A3", "B3", "C4", "D4",
+  "E", "F", "G", "A",
+  "B", "C", "D", "E",
+  "F", "G", "A", "B",
+  "C", "D", "E", "F",
 ];
 
 export default function MidiPadDemo() {
