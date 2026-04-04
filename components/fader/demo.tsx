@@ -31,10 +31,14 @@ export default function FaderDemo() {
         {/* Standalone — one fader with empty cells around it */}
         <BoardItem col={1} row={1} rowSpan={2}><Fader value={vol}    min={0}   max={100}   onChange={setVol}    label="Vol"    unit="%" /></BoardItem>
         {/* col 2 intentionally empty */}
-        {/* Grouped — adjacent BoardItems, board gap acts as the separation */}
-        <BoardItem col={3} row={1} rowSpan={2}><Fader value={reverb} min={0}   max={100}   onChange={setReverb} label="Reverb" unit="%" /></BoardItem>
-        <BoardItem col={4} row={1} rowSpan={2}><Fader value={delay}  min={0}   max={100}   onChange={setDelay}  label="Delay"  unit="%" /></BoardItem>
-        <BoardItem col={5} row={1} rowSpan={2}><Fader value={filter} min={200} max={20000} onChange={setFilter} label="Filter" unit="hz" /></BoardItem>
+        {/* Grouped — FaderGroup in a colSpan cell so borders touch and it reads as one piece */}
+        <BoardItem col={3} row={1} rowSpan={2} colSpan={3}>
+          <FaderGroup>
+            <Fader value={reverb} min={0}   max={100}   onChange={setReverb} label="Reverb" unit="%" />
+            <Fader value={delay}  min={0}   max={100}   onChange={setDelay}  label="Delay"  unit="%" />
+            <Fader value={filter} min={200} max={20000} onChange={setFilter} label="Filter" unit="hz" />
+          </FaderGroup>
+        </BoardItem>
         {/* col 6 intentionally empty */}
       </Board>
     </div>

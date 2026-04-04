@@ -74,9 +74,10 @@ export default function Fader({ value, min, max, onChange, label, unit, groupPos
 // groupPosition into each child so touching borders are removed and the
 // depth shadow appears on the container rather than each individual fader.
 export function FaderGroup({ children }: { children: React.ReactNode }) {
+  const embedded = useBoard();
   const arr = React.Children.toArray(children);
   return (
-    <div className={styles.faderGroup}>
+    <div className={`${styles.faderGroup} ${embedded ? styles.faderGroupEmbedded : ""}`}>
       {arr.map((child, i) => {
         if (!React.isValidElement(child)) return child;
         const position: GroupPosition =
