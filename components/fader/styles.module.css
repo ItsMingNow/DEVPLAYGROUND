@@ -1,0 +1,119 @@
+/* Fader has an intrinsic size of 64×136px (1×2 grid cells).
+   Inside a BoardItem the item's CSS stretches it to fill the cell automatically. */
+.fader {
+  width: 64px;
+  height: 122px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0;
+  gap: 4px;
+  user-select: none;
+
+  /* 3D raised look */
+  background: linear-gradient(180deg, #f5f5f5 0%, #ebebeb 100%);
+  border: 1px solid #c0c0c0;
+  border-bottom-color: #999;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.75),  /* top inner highlight */
+    0 3px 0 #aaa,                           /* bottom thickness edge */
+    0 4px 10px rgba(0,0,0,0.1);             /* soft drop shadow */
+}
+
+/* ── Group position variants ────────────────────────────────────────────────
+   When faders sit side-by-side the inner borders are removed and the
+   border-radius is flattened on touching edges so they read as one unit.
+   The depth shadow moves to the FaderGroup container instead. */
+
+.groupFirst {
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+}
+
+.groupMiddle {
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+}
+
+.groupLast {
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+}
+
+/* Group container owns the depth shadow so grouped faders look like one raised module */
+.faderGroup {
+  display: flex;
+  border-radius: 6px;
+  box-shadow:
+    0 3px 0 #aaa,
+    0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ── Embedded (inside a Board) ───────────────────────────────────────────────
+   Strips the raised panel look so the fader reads as part of the board surface. */
+.embedded {
+  background: #888;
+  border-color: #6e6e6e;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.embedded .label,
+.embedded .value {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Takes up the remaining vertical space between label and value */
+.trackArea {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The thin vertical rail the thumb slides along */
+.track {
+  width: 4px;
+  height: 100%;
+  background: #ccc;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* The handle — positioned absolutely within trackArea, centered horizontally */
+.thumb {
+  position: absolute;
+  width: 40px;
+  height: 12px;
+  background: linear-gradient(180deg, #f0f0f0 0%, #d8d8d8 100%);
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: box-shadow 0.08s ease;
+}
+
+.thumb:active {
+  cursor: grabbing;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.value {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}

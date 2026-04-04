@@ -22,6 +22,18 @@ export const registry: ComponentMeta[] = [
     sample: false
   },
   {
+    slug: "fader",
+    name: "Fader",
+    description: "A vertical fader with agnostic min/max/value props. Fits a 1×2 board slot.",
+    tags: ["input", "interaction", "module-system"],
+  },
+  {
+    slug: "board",
+    name: "Board",
+    description: "A fixed-cell grid container for arranging modules. 8×4 default, 64px cells, 8px gaps.",
+    tags: ["layout", "grid", "module-system"],
+  },
+  {
     slug: "knob",
     name: "Knob",
     description: "A rotary knob that selects between options by clicking and dragging up or down.",
