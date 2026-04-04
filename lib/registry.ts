@@ -40,6 +40,12 @@ export const registry: ComponentMeta[] = [
     tags: ["css", "interaction", "input"],
   },
   {
+    slug: "midi-pad",
+    name: "MIDI Pad",
+    description: "A pressure pad that pushes in and glows on press. Fits a 1×1 board slot.",
+    tags: ["input", "interaction", "module-system", "music"],
+  },
+  {
     slug: "synth-keyboard",
     name: "Synth Keyboard",
     description: "One octave of keys wired to Tone.js synthesis. Playable by mouse or keyboard.",
