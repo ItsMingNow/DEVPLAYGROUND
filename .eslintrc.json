@@ -5,6 +5,7 @@
     "sourceType": "module",
     "ecmaFeatures": { "jsx": true }
   },
+  "plugins": ["@typescript-eslint", "react-hooks"],
   "env": { "browser": true, "es2022": true, "node": true },
   "rules": {
     "max-len": ["warn", {

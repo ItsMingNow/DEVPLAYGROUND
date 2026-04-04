@@ -117,7 +117,8 @@ export default function SynthKeyboard({ volume = 70, octave = 4, soundSelection 
   // Volume is kept in sync independently so we don't need to rebuild the synth for it.
   // 0 maps to -Infinity dB (true silence) rather than just very quiet.
   useEffect(() => {
-    if (synth.current) synth.current.volume.value = volume === 0 ? -Infinity : (volume / 100) * 40 - 40;
+    if (synth.current)
+      synth.current.volume.value = volume === 0 ? -Infinity : (volume / 100) * 40 - 40;
   }, [volume]);
 
   const attack = async (note: string) => {

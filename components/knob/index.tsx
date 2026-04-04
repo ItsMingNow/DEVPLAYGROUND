@@ -33,7 +33,8 @@ export default function Knob({ options, value, onChange, label }: KnobProps) {
       if (!dragStart.current) return;
       const dy = dragStart.current.y - clientY;
       const step = Math.round(dy / 20);
-      const next = Math.max(0, Math.min(optionsRef.current.length - 1, dragStart.current.index + step));
+      const max = optionsRef.current.length - 1;
+      const next = Math.max(0, Math.min(max, dragStart.current.index + step));
       onChangeRef.current(next);
     };
     const onMouseMove = (e: MouseEvent) => move(e.clientY);

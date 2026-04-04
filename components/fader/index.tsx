@@ -61,7 +61,10 @@ export default function Fader({ value, min, max, onChange, label, unit, groupPos
           className={styles.thumb}
           style={{ top: thumbOffset }}
           onMouseDown={(e) => { e.preventDefault(); dragStart.current = { y: e.clientY, value }; }}
-          onTouchStart={(e) => { e.preventDefault(); dragStart.current = { y: e.touches[0].clientY, value }; }}
+          onTouchStart={(e) => {
+            e.preventDefault();
+            dragStart.current = { y: e.touches[0].clientY, value };
+          }}
         />
       </div>
       {label && <span className={styles.label}>{label}</span>}
