@@ -9,9 +9,12 @@ interface Props {
   color?: string;       // glow color when pressed, e.g. "#ff9500"
   onPress?: () => void;
   onRelease?: () => void;
+  active?: boolean;     // externally controlled pressed state (e.g. from MIDI)
 }
 
-export default function MidiPad({ label, color = "#ff9500", onPress, onRelease }: Props) {
+export default function MidiPad(
+  { label, color = "#ff9500", onPress, onRelease, active = false }: Props
+) {
   const [pressed, setPressed] = useState(false);
   const embedded = useBoard();
 
@@ -25,9 +28,11 @@ export default function MidiPad({ label, color = "#ff9500", onPress, onRelease }
     onRelease?.();
   };
 
+  const isPressed = pressed || active;
+
   return (
     <div
-      className={`${styles.pad} ${embedded ? styles.embedded : ""} ${pressed ? styles.pressed : ""}`}
+      className={`${styles.pad} ${embedded ? styles.embedded : ""} ${isPressed ? styles.pressed : ""}`}
       style={{ "--pad-color": color } as React.CSSProperties}
       onMouseDown={(e) => { e.preventDefault(); handlePress(); }}
       onMouseUp={handleRelease}

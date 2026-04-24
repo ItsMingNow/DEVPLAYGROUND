@@ -10,3 +10,25 @@
   color: var(--text-muted);
   margin: 0;
 }
+
+.midiStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+  flex-shrink: 0;
+}
+
+.dot.connected   { background: #4cd964; box-shadow: 0 0 6px #4cd964; }
+.dot.pending     { background: #ff9500; }
+.dot.no-device   { background: #ff9500; }
+.dot.denied      { background: #ff3b30; }
+.dot.unsupported { background: #ff3b30; }
